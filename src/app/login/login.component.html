@@ -1,0 +1,36 @@
+﻿<div class="container imageContainer" style="
+    height: 100vh;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+">
+
+
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-6 whiteBack">
+      <h2 style="color:darkcyan">Login</h2>
+      <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <md-card-content>
+
+          <md-input-container [ngClass]="{ 'mat-input-error': f.submitted && !username.valid }">
+
+            <input mdInput type="text" placeholder="User Name" style="width:300px;" name="username" [(ngModel)]="model.username" #username="ngModel"
+              required />
+            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+          </md-input-container>
+        </md-card-content>
+        <md-card-content>
+          <md-input-container [ngClass]="{ 'mat-input-error': f.submitted && !password.valid }">
+            <input mdInput type="password" placeholder="Password" style="width:300px;" name="password" [(ngModel)]="model.password" #password="ngModel"
+              required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block" ui-autocomplete="false">Password is required</div>
+          </md-input-container>
+        </md-card-content>
+        <div style="padding-bottom: 12px;margin-bottom: 44px;">
+          <button md-raised-button [disabled]="loading" class="btn btn-primary pull-right">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </div>

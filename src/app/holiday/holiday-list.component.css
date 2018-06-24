@@ -1,0 +1,41 @@
+thead {
+    color: #337AB7;
+}
+
+.search-panel {
+    max-width:320px;
+    background-color: lightgrey;
+}
+.spanHeads{
+    background: #f78f8f;
+    margin-right: 9px;
+}
+.holidayDiv{
+    background-color: #85e585;padding: 11px;
+}
+.addHolidayDiv{
+    border: 6px solid gray;background: white;
+}
+.coverBtn{
+    background: #5050c8;
+    padding-left: 27px;
+    padding-right: 27px;
+    padding-bottom: 9px;
+    padding-top: 9px;
+    border-radius: 5px;
+    color: white;
+}
+.morePadd{
+    padding-left: 25px;
+}
+.marginBtm{
+    margin-bottom: 12px;
+}
+.loaderGif{
+    bottom: 323px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    z-index: 9999999;
+    left: 166px;
+  }

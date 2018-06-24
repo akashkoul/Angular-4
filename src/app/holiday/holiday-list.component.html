@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-sm-6 addHolidayDiv">
+         <img class="loaderGif" src="assets/img/loading_spinner.jpg" *ngIf=addingFlag>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+            <div class="modal-header">
+                <h4 class="modal-title h4Style">Add New Package</h4>
+
+            </div>
+            <div class="modal-body bg-rar">
+                <div class="form-group" [ngClass]="{'has-error': (!title.valid && title.touched), 'has-success': (title.valid && title.touched)}">
+                    <label for="inputEmail9">Title</label>
+                    <br>
+                    <div class="form-group col-sm-12">
+                        <input [formControl]="title" type="text" class="form-control" id="inputEmail9" placeholder="Enter title">
+                        <div class="error-message sub-little-text" *ngIf="form.controls['title'].errors?.required && !form.controls['title'].pristine">
+                            Title is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': (!place.valid && place.touched), 'has-success': (place.valid && place.touched)}">
+                    <label for="inputEmail5">Place</label>
+
+                    <div class="form-group col-sm-12">
+                        <input [formControl]="place" type="text" class="form-control" id="inputEmail5" placeholder="Enter place">
+                        <div class="error-message sub-little-text" *ngIf="form.controls['place'].errors?.required && !form.controls['place'].pristine">
+                            Place is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': (!price.valid && price.touched), 'has-success': (price.valid && price.touched)}">
+                    <label for="price">Price</label>
+
+                    <div class="form-group col-sm-12">
+                        <input [formControl]="price" type="number" min="0" class="form-control" id="price" placeholder="Enter price">
+                        <div class="error-message sub-little-text" *ngIf="form.controls['price'].errors?.required && !form.controls['price'].pristine">
+                            Price is required.
+                        </div>
+                        <div class="error-message sub-little-text" *ngIf="form.controls['price'].errors?.invalid && !form.controls['price'].pristine">
+                            Price is invalid.!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': (!duration.valid && duration.touched), 'has-success': (duration.valid && duration.touched)}">
+                    <label for="price">Duration</label>
+
+                    <div class="form-group col-sm-12">
+                        <input [formControl]="duration" type="text" class="form-control" id="duration" placeholder="Enter duration">
+                        <div class="error-message sub-little-text" *ngIf="form.controls['duration'].errors?.required && !form.controls['duration'].pristine">
+                            Duration is required.
+                        </div>
+                        <div class="error-message sub-little-text" *ngIf="form.controls['duration'].errors?.invalid && !form.controls['duration'].pristine">
+                            Duration is invalid.!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': (!commission.valid && commission.touched), 'has-success': (commission.valid && commission.touched)}">
+                    <label for="inputEmail3">Commission</label>
+
+                    <div class="form-group col-sm-12">
+                        <input [formControl]="commission" type="number" min="0" class="form-control" id="inputEmail3" placeholder="Enter commission">
+                        <div class="error-message sub-little-text" *ngIf="form.controls['commission'].errors?.required && !form.controls['commission'].pristine">
+                            Commission is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': (!pdfUrl.valid && pdfUrl.touched), 'has-success': (pdfUrl.valid && pdfUrl.touched)}">
+                    <label for="inputEmail10">PDF Url</label>
+
+                    <div class="form-group col-sm-12">
+                        <input [formControl]="pdfUrl" type="text" class="form-control" id="inputEmail10" placeholder="Enter PDF Url">
+                        <div class="error-message sub-little-text" *ngIf="form.controls['pdfUrl'].errors?.required && !form.controls['pdfUrl'].pristine">
+                            PDF Url is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 btn-bottom">
+                <div class="footerModal" align="center">
+                    <button [disabled]="!form.valid" style="background: green;color: white;" type="submit" class="btn createBtn">ADD NEW PACKAGE</button>
+               <br>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-6">
+
+        <h2 class="col-sm-offset-1">Listed Holiday Packages</h2>
+
+        <div class="row marginBtm" *ngFor='let holiday of holidays'>
+            <div class="col-sm-offset-1 holidayDiv">
+                <h4>{{holiday.title}} </h4>
+                <hr>
+                <div class="morePadd">
+                    <br>
+                    <span class="spanHeads"> Duration : </span> {{holiday.duration}} <span class="spanHeads"> Place : </span>                    {{holiday.place}} <br>
+                    <span class="spanHeads"> Commission : </span> {{holiday.commission}} <span class="spanHeads"> Price : </span>                    {{holiday.price}}
+                    <br> <br> <span>PRIORITY</span> <span class="coverBtn">Cover</span>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- pager -->
+
+        <div *ngIf='!holidays || holidays.length <=0'> No record found !</div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+
+
+<div *ngIf="!authService.isAuthenticated()">
+  <login (isAuth)="isAuth($even)"></login>
+</div>
+
+<div [hidden]="!authService.isAuthenticated()">
+  <md-sidenav-container class="app-container" fullscreen>
+    <md-sidenav dark #sidenav mode="side" opened="true">
+      <md-card class="profile-card">
+        <md-card-header>
+          <div md-card-avatar class="avatar">
+          </div>
+          <md-card-title style="padding:10px;">{{currentUser.firstName}} {{currentUser.lastName}}
+
+          </md-card-title>
+
+          <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+        </button>
+          <md-menu #menu="mdMenu">
+            <button md-menu-item (click)="logout()">Logout</button>
+          </md-menu>
+        </md-card-header>
+
+      </md-card>
+      <md-nav-list>
+        <a md-list-item routerLink="dashboard">
+          <md-icon md-list-icon>show_chart</md-icon>
+          <span md-line>Dashboard</span>
+        </a>
+        <a md-list-item routerLink="customer">
+          <md-icon md-list-icon>account_box</md-icon>
+          <span md-line>Customer</span>
+        </a>
+        <a md-list-item routerLink="holiday">
+          <md-icon md-list-icon>store</md-icon>
+          <span md-line>Holiday</span>
+        </a>
+
+      </md-nav-list>
+    </md-sidenav>
+
+    <md-toolbar light>
+      <button md-icon-button (click)="sidenav.toggle()">
+            <md-icon md-list-icon>list</md-icon>
+        </button>
+
+      <span style="margin-left: 20px"></span>
+
+    </md-toolbar>
+    <div class="main">
+          <router-outlet></router-outlet>
+      </div>
+      <!--<footer class="footer">
+      </footer>-->
+  </md-sidenav-container>
+<div>
